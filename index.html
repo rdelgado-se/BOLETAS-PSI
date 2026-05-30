@@ -560,7 +560,7 @@ async function generatePDF(folioReal) {
   try { 
     if(LOGO_B64 && LOGO_B64.startsWith("data:")) {
       var formatoLogo = LOGO_B64.includes("image/png") ? "PNG" : "JPEG";
-      doc.addImage(LOGO_B64, formatoLogo, mg, 4, 60, 30); 
+      doc.addImage(LOGO_B64, jpeg, mg, 4, 60, 30); 
     }
   } catch(e) { console.log("Error logo:", e); }
   
