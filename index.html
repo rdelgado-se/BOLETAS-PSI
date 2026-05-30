@@ -560,7 +560,7 @@ async function generatePDF(folioReal) {
   try { 
     if(LOGO_B64 && LOGO_B64.startsWith("data:")) {
       var formatoLogo = LOGO_B64.includes("image/png") ? "PNG" : "JPEG";
-      doc.addImage(LOGO_B64, jpeg, mg, 4, 60, 30); 
+      doc.addImage(LOGO_B64, 'JPEG', mg, 4, 60, 30); 
     }
   } catch(e) { console.log("Error logo:", e); }
   
@@ -653,7 +653,7 @@ async function generatePDF(folioReal) {
       var x=mg+col*(cellW+gap);
       if(y+cellH>ph-mg-15){doc.addPage();y=mg;col=0;}
       var comp = await compressImg(photos[i].dataUrl, 600, 0.65);
-      try{doc.addImage(comp,'JPEG',x,y,cellW,cellH);}catch(e2){}
+      try{doc.addImage(comp,'JPEG',x,y,cellW,cellH);}catch(e2){
       doc.setFont('helvetica','normal'); doc.setFontSize(6); doc.setTextColor(120,130,145);
       doc.text(''+(i+1), x+1, y+cellH-1);
       col++; if(col>=cols){col=0;y+=cellH+gap;}
@@ -791,7 +791,7 @@ async function generatePDF(folioReal) {
       var x=mg+col*(cellW+gap);
       if(y+cellH>ph-mg-15){doc.addPage();y=mg;col=0;}
       var comp = await compressImg(photos[i].dataUrl, 600, 0.65);
-      try{doc.addImage(comp,'JPEG',x,y,cellW,cellH);}catch(e2){}
+      try{doc.addImage(comp,'JPEG',x,y,cellW,cellH);}catch(e2){
       doc.setFont('helvetica','normal'); doc.setFontSize(6); doc.setTextColor(120,130,145);
       doc.text(''+(i+1), x+1, y+cellH-1);
       col++; if(col>=cols){col=0;y+=cellH+gap;}
